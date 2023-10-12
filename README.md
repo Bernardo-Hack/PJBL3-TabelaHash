@@ -23,24 +23,24 @@ Foram implementados:
 #### Inserção
 Inserir o objeto, por código ou input, utilizando a função hash (espalhamento)
 
-<img src="" width="300px;" alt="Código inserindo valor"> 
-<img src="" width="300px;" alt="Valor inserido"> 
+<img src="" width="300px;" alt="">
+<img src="" width="300px;" alt="">
 
 
 #### Busca
 Buscar o objeto a partir da chave informada, por código ou input, e retornar o objeto
 encontrado (se existir)
 
-<img src="" width="300px;" alt="Código inserindo valor"> 
-<img src="" width="300px;" alt="Valor inserido"> 
+<img src="" width="300px;" alt=""> 
+<img src="" width="300px;" alt=""> 
 
 
 #### Remoção
 Remover o objeto a partir da chave informada, por código ou input, e retornar o
 objeto removido (se existir)
 
-<img src="" width="300px;" alt="Código inserindo valor"> 
-<img src="" width="300px;" alt="Valor inserido"> 
+<img src="" width="300px;" alt=""> 
+<img src="" width="300px;" alt=""> 
 
 
 
