@@ -55,35 +55,19 @@ public class MyHashTable <T> {
         }
         
         int keyPos = getKeyPos(key);
-
-        if (this.keys[keyPos] == null || this.keys[keyPos].equals("null")) {
-            this.keys[keyPos] = key.toString();
-            this.values[keyPos] = value;
-            this.quantItems++;
-
-        } else if(keys[keyPos] != null && keys[keyPos] != "null") {
-            int auxPos = keyPos + 1;
-
-            while (auxPos != keyPos) {
-                if (auxPos == this.getSize()) {
-                    auxPos = 0;
-                }
-
-                if (auxPos == keyPos) {
-                    System.out.println("Tabela está cheia! 💀");
-                    break;
-                }
-
-                if (keys[auxPos] == "null" || keys[auxPos] == null) {
-                    this.keys[keyPos] = key.toString();
-                    this.values[keyPos] = value;
-                    this.quantItems++;
-                    break;
-                } else {
-                    auxPos++;
-                }
+        int originalPos = keyPos;
+    
+        while (this.keys[keyPos] != null && !this.keys[keyPos].equals("null")) {
+            keyPos = (keyPos + 1) % this.getSize();
+            if (keyPos == originalPos) {
+                System.out.println("Tabela está cheia! 💀");
+                return;
             }
         }
+    
+        this.keys[keyPos] = key.toString();
+        this.values[keyPos] = value;
+        this.quantItems++;
     }
 
     T delete(T key) {
