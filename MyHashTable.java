@@ -1,4 +1,5 @@
 public class MyHashTable <T> {
+    private static final String DELETED = "DELETED";
     private T[] values;
     private String[] keys;
     private int quantItems;
@@ -57,7 +58,7 @@ public class MyHashTable <T> {
         int keyPos = getKeyPos(key);
         int originalPos = keyPos;
     
-        while (this.keys[keyPos] != null && !this.keys[keyPos].equals("null")) {
+        while (this.keys[keyPos] != null && !this.keys[keyPos].equals("DELETED")) {
             keyPos = (keyPos + 1) % this.getSize();
             if (keyPos == originalPos) {
                 System.out.println("Tabela está cheia! 💀");
@@ -78,7 +79,7 @@ public class MyHashTable <T> {
             if (this.keys[keyPos].equals(key.toString())) { // Use .equals() to compare keys
                 T rValue = this.values[keyPos];
     
-                this.keys[keyPos] = "null";
+                this.keys[keyPos] = "DELETED";
                 this.values[keyPos] = null;
                 this.quantItems--;
     
@@ -100,12 +101,12 @@ public class MyHashTable <T> {
         int originalPos = keyPos;
     
         while (this.keys[keyPos] != null && !this.keys[keyPos].equals("null")) {
-            if (this.keys[keyPos].equals(key.toString())) { // Use .equals() to compare keys
+            if (!this.keys[keyPos].equals(DELETED) && this.keys[keyPos].equals(key.toString())) {
                 T rValue = this.values[keyPos];
                 return rValue;
             }
-
-            keyPos += 1;
+    
+            keyPos = (keyPos + 1) % this.getSize();
             if (keyPos == originalPos) {
                 System.out.println("Valor não está na tabela! 💀");
                 return null;
