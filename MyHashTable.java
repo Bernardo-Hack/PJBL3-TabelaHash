@@ -70,63 +70,50 @@ public class MyHashTable <T> {
         this.quantItems++;
     }
 
-    T delete(T key) {
+    T delete(Object key) {
         int keyPos = getKeyPos(key);
-
-        if (this.keys[keyPos] == key) {
-            T rValue = this.values[keyPos];
-            this.keys[keyPos] = "null";
-            this.values[keyPos] = null;
-            this.quantItems--;
-            return rValue;
-
-        } else {
-            int auxPos = keyPos + 1;
-
-            while (auxPos != keyPos) {
-                if (auxPos == this.getSize()) {
-                    auxPos = 0;
-                }
-
-                if (keys[auxPos] == key) {
-                    T rValue = this.values[auxPos];
-                    this.keys[auxPos] = "null";
-                    this.values[auxPos] = null;
-                    this.quantItems--;
-                    return rValue;
-
-                } else {
-                    auxPos++;
-                }
+        int originalPos = keyPos;
+    
+        while (this.keys[keyPos] != null && !this.keys[keyPos].equals("null")) {
+            if (this.keys[keyPos].equals(key.toString())) { // Use .equals() to compare keys
+                T rValue = this.values[keyPos];
+    
+                this.keys[keyPos] = "null";
+                this.values[keyPos] = null;
+                this.quantItems--;
+    
+                return rValue;
+            }
+            keyPos = (keyPos + 1) % this.getSize();
+            if (keyPos == originalPos) {
+                System.out.println("Valor não está na tabela! 💀");
+                return null;
             }
         }
+    
         System.out.println("Valor não está na tabela! 💀");
         return null;
     }
-
-    T search(T key) {
+    
+    T search(Object key) {
         int keyPos = getKeyPos(key);
+        int originalPos = keyPos;
+    
+        while (this.keys[keyPos] != null && !this.keys[keyPos].equals("null")) {
+            if (this.keys[keyPos].equals(key.toString())) { // Use .equals() to compare keys
+                T rValue = this.values[keyPos];
+                return rValue;
+            }
 
-        if (this.keys[keyPos] == key) {
-            return this.values[keyPos];
-
-        } else {
-            int auxPos = keyPos + 1;
-
-            while (auxPos != keyPos) {
-                if (auxPos == this.getSize()) {
-                    auxPos = 0;
-                }
-
-                if (keys[auxPos] == key) {
-                    return this.values[auxPos];
-
-                } else {
-                    auxPos++;
-                }
+            keyPos += 1;
+            if (keyPos == originalPos) {
+                System.out.println("Valor não está na tabela! 💀");
+                return null;
             }
         }
-        return this.values[keyPos];
+    
+        System.out.println("Valor não está na tabela! 💀");
+        return null;
     }
 
     @SuppressWarnings("unchecked")
