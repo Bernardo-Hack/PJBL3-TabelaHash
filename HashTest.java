@@ -5,8 +5,10 @@ public class HashTest {
 
         for (Aluno aluno : alunos1) {
             table1.insert(aluno.getMatricula(), aluno);
-            table1.print();
-            System.out.println("");
+        }
+
+        for (Aluno aluno : alunos1) {
+            table1.insert(aluno.getMatricula(), aluno);
         }
 
         table1.print();
