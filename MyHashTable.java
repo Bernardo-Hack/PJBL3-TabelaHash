@@ -56,15 +56,15 @@ public class MyHashTable <T> {
         
         int keyPos = getKeyPos(key);
 
-        if (keys[keyPos] == "null" || keys[keyPos] == null) {
+        if (this.keys[keyPos] == null || this.keys[keyPos].equals("null")) {
             this.keys[keyPos] = key.toString();
             this.values[keyPos] = value;
             this.quantItems++;
 
-        } else {
+        } else if(keys[keyPos] != null && keys[keyPos] != "null") {
             int auxPos = keyPos + 1;
 
-            while (true) {
+            while (auxPos != keyPos) {
                 if (auxPos == this.getSize()) {
                     auxPos = 0;
                 }
@@ -93,6 +93,7 @@ public class MyHashTable <T> {
             T rValue = this.values[keyPos];
             this.keys[keyPos] = "null";
             this.values[keyPos] = null;
+            this.quantItems--;
             return rValue;
 
         } else {
@@ -107,6 +108,7 @@ public class MyHashTable <T> {
                     T rValue = this.values[auxPos];
                     this.keys[auxPos] = "null";
                     this.values[auxPos] = null;
+                    this.quantItems--;
                     return rValue;
 
                 } else {
@@ -166,5 +168,9 @@ public class MyHashTable <T> {
         for (int i = 0; i < this.getSize(); i++) {
             System.out.println("[ " + this.keys[i] + " | " + this.values[i] + " ]");
         }
+    }
+
+    public int getQuantItems() {
+        return quantItems;
     }
 }
