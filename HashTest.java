@@ -31,36 +31,38 @@ public class HashTest {
 
 
         //buscando no hash 1
-        long startHash1 = System.currentTimeMillis();
+        long startHash1 = System.nanoTime();
 
-        hash1.search(123456); 
-        hash1.search(456789);
-        hash1.search(789012);
-        hash1.search(398244);
-        hash1.search(398244);
+        System.out.println(hash1.search(123456));
+        System.out.println(hash1.search(456789));
+        System.out.println(hash1.search(789012));
+        System.out.println(hash1.search(398244));
+        System.out.println(hash1.search(398244));
         
 
-        long finishHash1 = System.currentTimeMillis();
+        long finishHash1 = System.nanoTime();
         long totalHash1 = finishHash1 - startHash1;
         System.out.println("Tempo: " + totalHash1);
 
         //buscando no hash 2
-        long startHash2 = System.currentTimeMillis();
+        long startHash2 = System.nanoTime();
 
-        hash2.search(123456); 
-        hash2.search(456789);
-        hash2.search(789012);
-        hash2.search(398244);
-        hash2.search(398244);
+        System.out.println(hash2.search(123456));
+        System.out.println(hash2.search(456789));
+        System.out.println(hash2.search(789012));
+        System.out.println(hash2.search(398244));
+        System.out.println(hash2.search(398244));
 
-        long finishHash2 = System.currentTimeMillis();
+        long finishHash2 = System.nanoTime();
         long totalHash2 = finishHash2 - startHash2;
         System.out.println("Tempo: " + totalHash2);
 
         if(totalHash1 < totalHash2){
             System.out.println("O primeiro tipo de Hash (joga pro proximo) é mais eficiente!!");
-        }else{
+        } else if(totalHash1 > totalHash2){
             System.out.println("O segundo tipo de Hash (joga na lista) é mais eficiente!!");
+        } else {
+            System.out.println("Os dois são enguais.");
         }
 
         
