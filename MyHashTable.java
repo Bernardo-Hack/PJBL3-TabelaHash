@@ -1,8 +1,8 @@
 public class MyHashTable <T> {
-    protected static final String DELETED = "DELETED";
-    protected T[] values;
-    protected String[] keys;
-    protected int quantItems;
+    private static final String DELETED = "DELETED";
+    private T[] values;
+    private String[] keys;
+    private int quantItems;
 
     @SuppressWarnings("unchecked")
 
@@ -12,7 +12,7 @@ public class MyHashTable <T> {
         this.keys = new String[size];
     }
 
-    protected boolean isAlmostFull() {
+    private boolean isAlmostFull() {
         if (this.quantItems >= this.keys.length * 0.75) {
             return true;
 
@@ -22,11 +22,11 @@ public class MyHashTable <T> {
         }
     }
 
-    protected int getSize() {
+    private int getSize() {
         return this.keys.length;
     }
 
-    protected int getKeyPos(Object key) {
+    private int getKeyPos(Object key) {
         if (key instanceof String) {
             // Código de espalhamento de chave String(deve ter 5 letras)
             String auxStr = key.toString();
@@ -119,7 +119,7 @@ public class MyHashTable <T> {
 
     @SuppressWarnings("unchecked")
 
-    protected void doubleSize() {
+    private void doubleSize() {
         // função para dobrar o tamanho da tabela
         int size = this.keys.length * 2;
         T[] newValues = (T[]) new Object[size];
