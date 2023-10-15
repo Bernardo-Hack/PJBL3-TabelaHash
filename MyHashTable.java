@@ -76,7 +76,7 @@ public class MyHashTable <T> {
         int originalPos = keyPos;
     
         while (this.keys[keyPos] != null && !this.keys[keyPos].equals("null")) {
-            if (this.keys[keyPos].equals(key.toString())) { // Use .equals() to compare keys
+            if (this.keys[keyPos].equals(key.toString())) {
                 T rValue = this.values[keyPos];
     
                 this.keys[keyPos] = "DELETED";
