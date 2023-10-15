@@ -32,7 +32,7 @@ public class MyHashTableEx <T> {
     private boolean isAlmostFull() {
         if (this.quantItems >= this.table.length * 0.75) {
             return true;
-
+            
         } else {
             return false;
             
